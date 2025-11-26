@@ -15,5 +15,5 @@ class ChunkingStrategySelector:
         else:
             self._chunking_strategy = RecursiveChunking()
 
-    def chunk_data(self, data):
-        self._chunking_strategy.perform_chunking(data=data)
+    def chunk_data(self, data, language):
+        self._chunking_strategy.perform_chunking(data=data, language=language)
