@@ -9,7 +9,7 @@ class ParserSelector:
         self._language = "python"
         self._parser = None
 
-    def set_parser(self, language="python", chunk_size=50, chunk_overlap=0):
+    def set_parser(self, language="python", chunk_size=5000, chunk_overlap=0):
 
         if language == "python":
             self._parser = RecursiveCharacterTextSplitter.from_language(

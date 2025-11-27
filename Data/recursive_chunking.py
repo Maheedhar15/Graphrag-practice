@@ -1,4 +1,4 @@
-from chunking import ChunkingStrategy
+from .chunking import ChunkingStrategy
 from Parsers.parser_selector import ParserSelector
 
 

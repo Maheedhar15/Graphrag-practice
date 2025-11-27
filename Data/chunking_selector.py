@@ -1,5 +1,5 @@
-from agentic_chunking import AgenticChunking
-from recursive_chunking import RecursiveChunking
+from .agentic_chunking import AgenticChunking
+from .recursive_chunking import RecursiveChunking
 
 
 class ChunkingStrategySelector:
@@ -16,4 +16,6 @@ class ChunkingStrategySelector:
             self._chunking_strategy = RecursiveChunking()
 
     def chunk_data(self, data, language):
-        self._chunking_strategy.perform_chunking(data=data, language=language)
+        chunks = self._chunking_strategy.perform_chunking(
+            data=data, language=language)
+        return chunks

@@ -1,4 +1,4 @@
-from chunking import ChunkingStrategy
+from .chunking import ChunkingStrategy
 
 
 class AgenticChunking(ChunkingStrategy):

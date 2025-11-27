@@ -1,8 +1,8 @@
 import abc
-from abc import abstractmethod
+from abc import ABC, abstractmethod
 
 
-class ChunkingStrategy(abc):
+class ChunkingStrategy(ABC):
     def __init__(self):
         pass
 
