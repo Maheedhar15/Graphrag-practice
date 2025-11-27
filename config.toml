@@ -1,0 +1,3 @@
+[data]
+chunking_strategy = "Recursive"
+supported_extensions = [".py", ".js", ".jsx"]
