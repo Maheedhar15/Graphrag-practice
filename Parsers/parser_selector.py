@@ -3,6 +3,8 @@ from langchain_text_splitters import (
     RecursiveCharacterTextSplitter
 )
 
+from .ast_python_parser import ASTPythonParser
+
 
 class ParserSelector:
     def __init__(self):
@@ -12,8 +14,7 @@ class ParserSelector:
     def set_parser(self, language="python", chunk_size=5000, chunk_overlap=0):
 
         if language == "python":
-            self._parser = RecursiveCharacterTextSplitter.from_language(
-                language=Language.PYTHON, chunk_size=chunk_size, chunk_overlap=chunk_overlap)
+            self._parser = ASTPythonParser()
         else:
             self._parser = RecursiveCharacterTextSplitter.from_language(
                 language=Language.JS, chunk_size=chunk_size, chunk_overlap=chunk_overlap)

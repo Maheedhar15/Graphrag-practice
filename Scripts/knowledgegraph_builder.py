@@ -37,3 +37,4 @@ if __name__ == "__main__":
                 print(f"Parsing File: {file_path}\n\n\n")
                 chunks = kgb.get_chunks(data, language.lower())
                 pprint(chunks)
+                break
