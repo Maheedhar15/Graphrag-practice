@@ -10,8 +10,12 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 class KnowledgegraphBuilder:
     def __init__(self, chunking_strategy):
         from Data.chunking_selector import ChunkingStrategySelector
+        from Embeddings.generate_embeddings import EmbedCode
+        from Embeddings.chroma import ChromaVectorStore
         self.chunking_strategy = ChunkingStrategySelector(
             chunking_strategy=chunking_strategy)
+        self.embedder = EmbedCode()
+        self.chroma_client = ChromaVectorStore()
 
     def get_chunks(self, data, language):
         chunks = self.chunking_strategy.chunk_data(
@@ -20,7 +24,7 @@ class KnowledgegraphBuilder:
 
 
 if __name__ == "__main__":
-    data_path = "../Project-data"
+    data_path = "/home/mahi/Projects/Graphrag-practice/Project-data"
     supported_extensions = {".py": "python"}
 
     kgb = KnowledgegraphBuilder(chunking_strategy="recursive")
@@ -35,6 +39,7 @@ if __name__ == "__main__":
                     data = f.read()
 
                 print(f"Parsing File: {file_path}\n\n\n")
-                chunks = kgb.get_chunks(data, language.lower())
-                pprint(chunks)
-                break
+                chunks = kgb.get_chunks(data, language.lower(), file_path)
+                vectors = kgb.embedder.generate_embeddings(
+                    chunks=chunks, file_path=file_path)
+                kgb.chroma_client.add_vector_to_collection(vectors)

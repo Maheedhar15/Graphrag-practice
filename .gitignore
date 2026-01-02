@@ -2,3 +2,5 @@
 .vscode
 __pycache__
 Project-data/
+test_embeddings.txt
+db/
