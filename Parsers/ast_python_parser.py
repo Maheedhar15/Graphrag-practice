@@ -7,6 +7,7 @@ from typing import List, Any, Dict
 
 @dataclass
 class CodeChunk:
+    chunk_id: str
     content: str
     metadata: Dict[str, Any]
 

@@ -17,9 +17,9 @@ class KnowledgegraphBuilder:
         self.embedder = EmbedCode()
         self.chroma_client = ChromaVectorStore()
 
-    def get_chunks(self, data, language):
+    def get_chunks(self, data, language, file_path):
         chunks = self.chunking_strategy.chunk_data(
-            data=data, language=language)
+            data=data, language=language, file_path=file_path)
         return chunks
 
 
